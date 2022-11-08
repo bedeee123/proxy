@@ -2,20 +2,18 @@ from abc import ABC, abstractmethod
 import datetime
 
 class Subject(ABC):
-
     @abstractmethod
-    def request(self) -> None:
+    def request(self):
         pass
 
 
 class RealSubject(Subject):
-
-    def request(self) -> None:
+    def request(self):
         return "RealSubject: Handling request."
 
 class Proxy(Subject):
 
-    def __init__(self, real_subject: RealSubject) -> None:
+    def __init__(self, real_subject: RealSubject):
         self._real_subject = real_subject
 
     def request(self,x):
@@ -26,14 +24,14 @@ class Proxy(Subject):
         else:
             return "Access Denied"
 
-    def check_access(self,x) -> bool:
+    def check_access(self,x):
         print("Proxy: Checking access prior to firing a real request.")
         if x == 0:
             return True
         else:
             return False
 
-    def log_access(self) -> None:
+    def log_access(self):
         date = datetime.datetime.now()
         return f"Proxy Log: {date}"
 
