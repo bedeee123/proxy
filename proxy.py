@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-
+import datetime
 
 class Subject(ABC):
 
@@ -21,7 +21,8 @@ class Proxy(Subject):
     def request(self,x):
         if self.check_access(x):
             real = self._real_subject.request()
-            return f"{real}"
+            date = self.log_access()
+            return f"{real}\n{date}"
         else:
             return "Access Denied"
 
@@ -33,7 +34,8 @@ class Proxy(Subject):
             return False
 
     def log_access(self) -> None:
-        print("Proxy: Logging the time of request.", end="")
+        date = datetime.datetime.now()
+        return f"Proxy Log: {date}"
 
 if __name__ == "__main__":
     print("Client: Executing the client code with a real subject:")
