@@ -2,7 +2,7 @@ from proxy import *
 import unittest
 
 class testProxy(unittest.TestCase):
-    def test_when_calling_proxy_class_output_should_be_request_method_details(self):
+    def test_when_calling_proxy_class_output_should_call_realSubject(self):
         #Arrange
         real_subject = RealSubject()
         PROX = Proxy(real_subject)
