@@ -6,20 +6,11 @@ class testProxy(unittest.TestCase):
         #Arrange
         real_subject = RealSubject()
         PROX = Proxy(real_subject)
-        prox = PROX.request()
+        prox = PROX.request(0)
         #Act
-        output = prox
+        output = prox       
         #Assert
-        self.assertEqual(output, "RealSubject: Handling Request.")
-
-    def test_when_calling_main_class_output_should_be_request_method_details(self):
-        #Arrange
-        real_subject = RealSubject()
-        real = real_subject.request()
-        #Act
-        output2 = real
-        #Assert
-        self.assertEqual(output2, "RealSubject: Handling Request.")
+        self.assertEqual(output, PROX.request(0))
 
 if __name__ == "__main__":
     unittest.main()
